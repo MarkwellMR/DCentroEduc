@@ -5,6 +5,9 @@
  */
 package dcentroeduc;
 
+import com.centroeduc.controller.AdminControlador;
+import vista.JFrmAdmin;
+
 /**
  *
  * @author Usuario
@@ -16,6 +19,9 @@ public class DCentroEduc {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        JFrmAdmin frmadmin = new JFrmAdmin();
+        AdminControlador admincontrol = new AdminControlador(frmadmin);
+        frmadmin.setVisible(true);
     }
     
 }
