@@ -6,6 +6,7 @@
 package vista;
 
 import com.centroeduc.controller.AdminControlador;
+import com.centroeduc.controller.AlumnoControlador;
 
 /**
  *
@@ -135,7 +136,10 @@ public class MdiAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
-        System.exit(0);
+        JFrmAlumno frmalumno = new JFrmAlumno();
+        this.desktopPane.add(frmalumno);
+        frmalumno.setVisible(true);
+        AlumnoControlador alumno = new AlumnoControlador(frmalumno);
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
     private void openMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItemActionPerformed
