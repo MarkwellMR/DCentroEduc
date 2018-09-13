@@ -7,6 +7,7 @@ package vista;
 
 import com.centroeduc.controller.AdminControlador;
 import com.centroeduc.controller.AlumnoControlador;
+import com.centroeduc.controller.MaestroControlador;
 
 /**
  *
@@ -34,6 +35,7 @@ public class MdiAdmin extends javax.swing.JFrame {
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         openMenuItem = new javax.swing.JMenuItem();
+        jCbMaestro = new javax.swing.JMenuItem();
         saveMenuItem = new javax.swing.JMenuItem();
         saveAsMenuItem = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
@@ -59,6 +61,15 @@ public class MdiAdmin extends javax.swing.JFrame {
             }
         });
         fileMenu.add(openMenuItem);
+
+        jCbMaestro.setMnemonic('o');
+        jCbMaestro.setText("Maestro");
+        jCbMaestro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCbMaestroActionPerformed(evt);
+            }
+        });
+        fileMenu.add(jCbMaestro);
 
         saveMenuItem.setMnemonic('s');
         saveMenuItem.setText("Llamar otro");
@@ -158,6 +169,13 @@ public class MdiAdmin extends javax.swing.JFrame {
         
     }//GEN-LAST:event_saveMenuItemActionPerformed
 
+    private void jCbMaestroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCbMaestroActionPerformed
+        JFrmMaestro frmmaestro = new JFrmMaestro();
+        this.desktopPane.add(frmmaestro);
+        frmmaestro.setVisible(true);
+        MaestroControlador contro = new MaestroControlador(frmmaestro);
+    }//GEN-LAST:event_jCbMaestroActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -204,6 +222,7 @@ public class MdiAdmin extends javax.swing.JFrame {
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
+    private javax.swing.JMenuItem jCbMaestro;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem openMenuItem;
     private javax.swing.JMenuItem pasteMenuItem;
