@@ -196,7 +196,6 @@ public class SecreControlador implements ActionListener, MouseListener {
         logica.jTxtCuiS.setText(null);
         logica.jPsfContraS.setText(null);
         logica.jTxtCodigoS.requestFocus();
-
     }
 
     @Override
