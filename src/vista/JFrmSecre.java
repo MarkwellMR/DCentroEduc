@@ -37,9 +37,7 @@ public class JFrmSecre extends javax.swing.JInternalFrame {
         jLblDireccion = new javax.swing.JLabel();
         jTxtDireccionS = new javax.swing.JTextField();
         jLblEmail = new javax.swing.JLabel();
-        jTxtEmailS = new javax.swing.JTextField();
         jLblTelCasa = new javax.swing.JLabel();
-        jTxtTelCasaS = new javax.swing.JTextField();
         jLblTelMovil = new javax.swing.JLabel();
         jTxtTelMovilS = new javax.swing.JTextField();
         jLblFechaNac = new javax.swing.JLabel();
@@ -53,6 +51,10 @@ public class JFrmSecre extends javax.swing.JInternalFrame {
         jTblSecre = new javax.swing.JTable();
         jTxtCodigoAdmS = new javax.swing.JTextField();
         jLblCodigoAD = new javax.swing.JLabel();
+        jBtnActualizarS = new javax.swing.JButton();
+        jBtnEliminarS = new javax.swing.JButton();
+        jTxtTelCasaS = new javax.swing.JTextField();
+        jTxtEmailS = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -63,25 +65,31 @@ public class JFrmSecre extends javax.swing.JInternalFrame {
         jLblTitulo.setText("Secretaria");
 
         jTxtCodigoS.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        jTxtCodigoS.setText("A0020");
+        jTxtCodigoS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTxtCodigoSActionPerformed(evt);
+            }
+        });
 
         jLblNombre.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLblNombre.setText("Nombre:");
 
         jTxtNombreS.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        jTxtNombreS.setText("Juanito");
 
         jLblApellido.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLblApellido.setText("Apellido:");
 
         jTxtApellidoS.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        jTxtApellidoS.setText("Perez");
+        jTxtApellidoS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTxtApellidoSActionPerformed(evt);
+            }
+        });
 
         jLblDireccion.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLblDireccion.setText("Dirección:");
 
         jTxtDireccionS.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        jTxtDireccionS.setText("por la san Juan");
         jTxtDireccionS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTxtDireccionSActionPerformed(evt);
@@ -89,31 +97,22 @@ public class JFrmSecre extends javax.swing.JInternalFrame {
         });
 
         jLblEmail.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        jLblEmail.setText("Correo Electronico:");
-
-        jTxtEmailS.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        jTxtEmailS.setText("juanito@gmail.com");
+        jLblEmail.setText("Email:");
 
         jLblTelCasa.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLblTelCasa.setText("Tel. Casa:");
-
-        jTxtTelCasaS.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        jTxtTelCasaS.setText("22222222");
 
         jLblTelMovil.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLblTelMovil.setText("Tel. Movil:");
 
         jTxtTelMovilS.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        jTxtTelMovilS.setText("32145698");
 
         jLblFechaNac.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLblFechaNac.setText("Fecha Nac.");
 
         jTxtFechaNacS.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        jTxtFechaNacS.setText("1999/05/05");
 
         jTxtCuiS.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        jTxtCuiS.setText("21456987456321");
 
         jLblCui.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLblCui.setText("Cui:");
@@ -122,7 +121,6 @@ public class JFrmSecre extends javax.swing.JInternalFrame {
         jLblpass.setText("Contraseña:");
 
         jPsfContraS.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        jPsfContraS.setText("HI");
 
         jBtnGuardarS.setText("Guardar");
         jBtnGuardarS.addActionListener(new java.awt.event.ActionListener() {
@@ -142,7 +140,6 @@ public class JFrmSecre extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTblSecre);
 
         jTxtCodigoAdmS.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        jTxtCodigoAdmS.setText("A0022");
         jTxtCodigoAdmS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTxtCodigoAdmSActionPerformed(evt);
@@ -151,6 +148,17 @@ public class JFrmSecre extends javax.swing.JInternalFrame {
 
         jLblCodigoAD.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLblCodigoAD.setText("Código:");
+
+        jBtnActualizarS.setText("Actualizar");
+
+        jBtnEliminarS.setText("Eliminar");
+
+        jTxtEmailS.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        jTxtEmailS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTxtEmailSActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -161,21 +169,20 @@ public class JFrmSecre extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLblEmail)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTxtEmailS, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jLblCodigo)
                                 .addGap(18, 18, 18)
                                 .addComponent(jTxtCodigoS, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLblDireccion)
-                                    .addComponent(jLblNombre))
-                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLblDireccion)
+                                        .addComponent(jLblNombre))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(jLblEmail)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -186,45 +193,51 @@ public class JFrmSecre extends javax.swing.JInternalFrame {
                                                 .addComponent(jLblApellido)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jTxtApellidoS))
-                                    .addComponent(jTxtDireccionS)))))
+                                    .addComponent(jTxtDireccionS)
+                                    .addComponent(jTxtEmailS, javax.swing.GroupLayout.Alignment.TRAILING)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(21, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLblFechaNac)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jTxtFechaNacS, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLblTelCasa)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGap(18, 18, 18)
                                         .addComponent(jTxtTelCasaS, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLblpass)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jPsfContraS, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
+                                        .addComponent(jLblCodigoAD)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jTxtCodigoAdmS, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLblCui)
-                                            .addComponent(jLblTelMovil))
+                                            .addComponent(jLblTelMovil)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLblCui)
+                                                .addGap(23, 23, 23)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jTxtTelMovilS, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
-                                            .addComponent(jTxtCuiS)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(32, 32, 32)
-                                        .addComponent(jLblCodigoAD)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTxtCodigoAdmS))))
+                                            .addComponent(jTxtCuiS)))))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 828, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(45, 45, 45))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(222, 222, 222)
-                .addComponent(jBtnGuardarS, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jBtnGuardarS, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(jBtnActualizarS)
+                .addGap(36, 36, 36)
+                .addComponent(jBtnEliminarS)
+                .addGap(258, 258, 258))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -250,15 +263,18 @@ public class JFrmSecre extends javax.swing.JInternalFrame {
                     .addComponent(jLblDireccion)
                     .addComponent(jTxtDireccionS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLblEmail)
-                    .addComponent(jTxtEmailS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLblEmail)
+                        .addGap(20, 20, 20))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jTxtEmailS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLblTelCasa)
-                    .addComponent(jTxtTelCasaS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLblTelMovil)
-                    .addComponent(jTxtTelMovilS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTxtTelMovilS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTxtTelCasaS, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLblFechaNac)
@@ -266,17 +282,19 @@ public class JFrmSecre extends javax.swing.JInternalFrame {
                     .addComponent(jLblCui)
                     .addComponent(jTxtCuiS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLblpass)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jPsfContraS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLblCodigoAD)
-                        .addComponent(jTxtCodigoAdmS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(26, 26, 26)
-                .addComponent(jBtnGuardarS, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jPsfContraS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLblCodigoAD)
+                    .addComponent(jTxtCodigoAdmS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLblpass))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBtnEliminarS)
+                    .addComponent(jBtnActualizarS)
+                    .addComponent(jBtnGuardarS))
+                .addGap(46, 46, 46))
         );
 
         pack();
@@ -293,6 +311,18 @@ public class JFrmSecre extends javax.swing.JInternalFrame {
     private void jTxtCodigoAdmSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtCodigoAdmSActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTxtCodigoAdmSActionPerformed
+
+    private void jTxtCodigoSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtCodigoSActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTxtCodigoSActionPerformed
+
+    private void jTxtApellidoSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtApellidoSActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTxtApellidoSActionPerformed
+
+    private void jTxtEmailSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtEmailSActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTxtEmailSActionPerformed
 
     /**
      * @param args the command line arguments
@@ -333,6 +363,8 @@ public class JFrmSecre extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton jBtnActualizarS;
+    public javax.swing.JButton jBtnEliminarS;
     public javax.swing.JButton jBtnGuardarS;
     private javax.swing.JLabel jLblApellido;
     private javax.swing.JLabel jLblCodigo;

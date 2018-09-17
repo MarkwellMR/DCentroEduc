@@ -93,15 +93,14 @@ public class SecreDAO  extends Conexion{
             this.cerrarConex();
         }
         return array;
-
     }
      
-     public String editarSecretaria(Secretaria secre) {
+     public String editarSecretaria(Secretaria secre, Administrador admin) {
         ingreso = null;
 
         try {
             this.Conectar();
-            sql = "Update secretaria set nombre=?, apellido=?, direccion=?, email=?, tel_casa=?, tel_movil=?, fechanac=?, cui=?, password=?, estado=? where cod_secre=?";
+            sql = "Update secretaria set nombre=?, apellido=?, direccion=?, email=?, tel_casa=?, tel_movil=?, fechanac=?, cui=?, password=?, cod_admin=? where cod_secre=?";
             run = this.getMiconexion().prepareStatement(sql);
             
             
@@ -113,9 +112,10 @@ public class SecreDAO  extends Conexion{
             run.setInt(6, secre.getTelMovil());
             run.setString(7, secre.getFechanac());
             run.setLong(8, secre.getCui());
-            run.setString(9, secre.getPass());
-            run.setInt(10, secre.getEstado());
+            run.setString(9, secre.getPass());  
+            run.setString(10, admin.getCodigo());
             run.setString(11, secre.getCodigo());
+            
             run.executeUpdate();
             
             ingreso = "Datos Actualizados con exito!";
@@ -128,6 +128,7 @@ public class SecreDAO  extends Conexion{
         return ingreso;
     }
      
+   
      public Secretaria buscarCodigo(String id) {
         Secretaria secre = new Secretaria();
 
