@@ -56,6 +56,7 @@ public class JFrmSecre extends javax.swing.JInternalFrame {
         jTxtTelCasaS = new javax.swing.JTextField();
         jTxtEmailS = new javax.swing.JTextField();
 
+        setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLblCodigo.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
