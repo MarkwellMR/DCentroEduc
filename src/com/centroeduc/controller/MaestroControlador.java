@@ -4,6 +4,8 @@ import com.centroeduc.dao.MaestroDAO;
 import com.centroeduc.model.Maestro;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -13,7 +15,7 @@ import vista.JFrmMaestro;
  *
  * @author Usuario
  */
-public class MaestroControlador implements ActionListener {
+public class MaestroControlador implements ActionListener, MouseListener {
 
     JFrmMaestro maestro = new JFrmMaestro();
     MaestroDAO dao = new MaestroDAO();
@@ -23,6 +25,9 @@ public class MaestroControlador implements ActionListener {
 
         this.maestro = ma;
         this.maestro.jBtnGuardar.addActionListener(this);
+        this.maestro.jBtnActualizar.addActionListener(this);
+        this.maestro.jBtnEstado.addActionListener(this);
+        this.maestro.jTblMaestro.addMouseListener(this);
         listaMaestro();
     }
 
@@ -32,6 +37,12 @@ public class MaestroControlador implements ActionListener {
         System.out.println("Maestro");
         if (eventoM.getSource() == this.maestro.jBtnGuardar) {
             guardarMaestro();
+        }
+        if (eventoM.getSource() == this.maestro.jBtnActualizar) {
+            actualizarMaestro();
+        }
+        if (eventoM.getSource() == this.maestro.jBtnEstado) {
+            cambiarEstado();
         }
     }
 
@@ -57,7 +68,39 @@ public class MaestroControlador implements ActionListener {
         listaMaestro();
 
     }
-    
+
+    public void actualizarMaestro() {
+        String mensaje = null;
+
+        mae.setNombre(this.maestro.jTxtNombre.getText());
+        mae.setApellido(this.maestro.jTxtApellido.getText());
+        mae.setDireccion(this.maestro.jTxtDireccion.getText());
+        mae.setEmail(this.maestro.jTxtEmail.getText());
+        mae.setTelCasa(Integer.parseInt(this.maestro.jTxtTelCasa.getText()));
+        mae.setTelMovil(Integer.parseInt(this.maestro.jTxtTelMovil.getText()));
+        mae.setFechanac(this.maestro.jTxtFechaNac.getText());
+        mae.setCui(Long.parseLong(this.maestro.jTxtCui.getText()));
+        mae.setCodigoA(this.maestro.jTxtCodigoA.getText());
+        mae.setPass(this.maestro.jPsfContra.getText());
+        mae.setCodigo(this.maestro.jTxtCodigo.getText());
+        mensaje = dao.editarMaestro(mae);
+
+        JOptionPane.showMessageDialog(null, mensaje);
+        limpiarControles();
+        listaMaestro();
+
+    }
+
+    public void cambiarEstado() {
+        String mensaje = null;
+
+        mae.setCodigo(this.maestro.jTxtCodigo.getText());
+        mensaje = dao.estadoMaestro(mae);
+        JOptionPane.showMessageDialog(null, mensaje);
+        limpiarControles();
+        listaMaestro();
+
+    }
 
     public void listaMaestro() {
         ArrayList<Maestro> list = new ArrayList();
@@ -74,6 +117,7 @@ public class MaestroControlador implements ActionListener {
         tabla.addColumn("Tel Movil");
         tabla.addColumn("Fecha de Nacimiento");
         tabla.addColumn("Cui");
+        tabla.addColumn("Contraseña");
         tabla.addColumn("Codigo Admin");
 
         Object[] columna = new Object[11];
@@ -88,7 +132,8 @@ public class MaestroControlador implements ActionListener {
             columna[6] = list.get(i).getTelMovil();
             columna[7] = list.get(i).getFechanac();
             columna[8] = list.get(i).getCui();
-            columna[9] = list.get(i).getCodigoA();
+            columna[9] = list.get(i).getPass();
+            columna[10] = list.get(i).getCodigoA();
 
             tabla.addRow(columna);
         }
@@ -104,8 +149,48 @@ public class MaestroControlador implements ActionListener {
         maestro.jTxtTelMovil.setText(null);
         maestro.jTxtFechaNac.setText(null);
         maestro.jTxtCui.setText(null);
-        maestro.jTxtCodigoA.setText(null);
         maestro.jPsfContra.setText(null);
+        maestro.jTxtCodigoA.setText(null);
+
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent boton) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (boton.getSource() == maestro.jTblMaestro) {
+            maestro.jTxtCodigo.setText(maestro.jTblMaestro.getValueAt(maestro.jTblMaestro.getSelectedRow(), 0).toString());
+            maestro.jTxtNombre.setText(maestro.jTblMaestro.getValueAt(maestro.jTblMaestro.getSelectedRow(), 1).toString());
+            maestro.jTxtApellido.setText(maestro.jTblMaestro.getValueAt(maestro.jTblMaestro.getSelectedRow(), 2).toString());
+            maestro.jTxtDireccion.setText(maestro.jTblMaestro.getValueAt(maestro.jTblMaestro.getSelectedRow(), 3).toString());
+            maestro.jTxtEmail.setText(maestro.jTblMaestro.getValueAt(maestro.jTblMaestro.getSelectedRow(), 4).toString());
+            maestro.jTxtTelCasa.setText(maestro.jTblMaestro.getValueAt(maestro.jTblMaestro.getSelectedRow(), 5).toString());
+            maestro.jTxtTelMovil.setText(maestro.jTblMaestro.getValueAt(maestro.jTblMaestro.getSelectedRow(), 6).toString());
+            maestro.jTxtFechaNac.setText(maestro.jTblMaestro.getValueAt(maestro.jTblMaestro.getSelectedRow(), 7).toString());
+            maestro.jTxtCui.setText(maestro.jTblMaestro.getValueAt(maestro.jTblMaestro.getSelectedRow(), 8).toString());
+            maestro.jPsfContra.setText(maestro.jTblMaestro.getValueAt(maestro.jTblMaestro.getSelectedRow(), 9).toString());
+            maestro.jTxtCodigoA.setText(maestro.jTblMaestro.getValueAt(maestro.jTblMaestro.getSelectedRow(), 10).toString());
+
+        }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent me) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent me) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent me) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent me) {
+
     }
 
 }
