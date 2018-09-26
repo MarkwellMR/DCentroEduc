@@ -65,6 +65,30 @@ public class AlumnoGradoDAO extends Conexion {
         }
         return lista;
     }
+    
+    public ArrayList<AlumnoGrado> DatosAlumnoGrado() {
+        ArrayList<AlumnoGrado> lista = new ArrayList();
+        try {
+            this.Conectar();
+            sql = "select* from alumnogrado";
+            ejecutar = this.getMiconexion().prepareStatement(sql);
+            valores = this.ejecutar.executeQuery();
+            while (valores.next()) {
+                AlumnoGrado alumnGrad = new AlumnoGrado();
+                alumnGrad.setCodAlumnos(valores.getInt("cod_alumn"));
+                alumnGrad.setCcursgradsecprof(valores.getInt("cod_curs_grad_sec_prof"));
+                alumnGrad.setYear(valores.getInt("ciclo"));
+                lista.add(alumnGrad);
+
+            }
+
+        } catch (SQLException e) {
+            System.out.println("error en datos alumno grado" + e);
+        } finally {
+            this.cerrarConex();
+        }
+        return lista;
+    }
 
     public AlumnoGrado busquedaCodigo(int Codigo) {
         AlumnoGrado algra = new AlumnoGrado();
