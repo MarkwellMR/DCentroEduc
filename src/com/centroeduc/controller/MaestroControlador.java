@@ -34,7 +34,7 @@ public class MaestroControlador implements ActionListener, MouseListener {
     @Override
     public void actionPerformed(ActionEvent eventoM) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        System.out.println("Maestro");
+        
         if (eventoM.getSource() == this.maestro.jBtnGuardar) {
             guardarMaestro();
         }
@@ -96,6 +96,7 @@ public class MaestroControlador implements ActionListener, MouseListener {
 
         mae.setCodigo(this.maestro.jTxtCodigo.getText());
         mensaje = dao.estadoMaestro(mae);
+        
         JOptionPane.showMessageDialog(null, mensaje);
         limpiarControles();
         listaMaestro();
@@ -137,6 +138,13 @@ public class MaestroControlador implements ActionListener, MouseListener {
 
             tabla.addRow(columna);
         }
+        this.maestro.jTblMaestro.getColumnModel().getColumn(10).setPreferredWidth(0);
+        this.maestro.jTblMaestro.getColumnModel().getColumn(10).setMaxWidth(0);
+        this.maestro.jTblMaestro.getColumnModel().getColumn(10).setMinWidth(0);
+        this.maestro.jTblMaestro.getColumnModel().getColumn(9).setPreferredWidth(0);
+        this.maestro.jTblMaestro.getColumnModel().getColumn(9).setMaxWidth(0);
+        this.maestro.jTblMaestro.getColumnModel().getColumn(9).setMinWidth(0);
+        
     }
 
     public void limpiarControles() {

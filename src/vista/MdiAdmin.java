@@ -7,7 +7,11 @@ package vista;
 
 import com.centroeduc.controller.AdminControlador;
 import com.centroeduc.controller.AlumnoControlador;
+import com.centroeduc.controller.GradoControlador;
 import com.centroeduc.controller.MaestroControlador;
+import com.centroeduc.controller.NotasControlador;
+import com.centroeduc.controller.SeccionControlador;
+import com.centroeduc.controller.UnidadControlador;
 
 /**
  *
@@ -39,6 +43,9 @@ public class MdiAdmin extends javax.swing.JFrame {
         saveMenuItem = new javax.swing.JMenuItem();
         saveAsMenuItem = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
+        exitMenuItem1 = new javax.swing.JMenuItem();
+        exitMenuItem2 = new javax.swing.JMenuItem();
+        exitMenuItem3 = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
         cutMenuItem = new javax.swing.JMenuItem();
         copyMenuItem = new javax.swing.JMenuItem();
@@ -72,7 +79,7 @@ public class MdiAdmin extends javax.swing.JFrame {
         fileMenu.add(jCbMaestro);
 
         saveMenuItem.setMnemonic('s');
-        saveMenuItem.setText("Llamar otro");
+        saveMenuItem.setText("Seccion");
         saveMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveMenuItemActionPerformed(evt);
@@ -86,13 +93,40 @@ public class MdiAdmin extends javax.swing.JFrame {
         fileMenu.add(saveAsMenuItem);
 
         exitMenuItem.setMnemonic('x');
-        exitMenuItem.setText("Exit");
+        exitMenuItem.setText("exit");
         exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitMenuItemActionPerformed(evt);
             }
         });
         fileMenu.add(exitMenuItem);
+
+        exitMenuItem1.setMnemonic('x');
+        exitMenuItem1.setText("Grado");
+        exitMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitMenuItem1ActionPerformed(evt);
+            }
+        });
+        fileMenu.add(exitMenuItem1);
+
+        exitMenuItem2.setMnemonic('x');
+        exitMenuItem2.setText("Unidad");
+        exitMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitMenuItem2ActionPerformed(evt);
+            }
+        });
+        fileMenu.add(exitMenuItem2);
+
+        exitMenuItem3.setMnemonic('x');
+        exitMenuItem3.setText("Notas");
+        exitMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitMenuItem3ActionPerformed(evt);
+            }
+        });
+        fileMenu.add(exitMenuItem3);
 
         menuBar.add(fileMenu);
 
@@ -163,9 +197,10 @@ public class MdiAdmin extends javax.swing.JFrame {
 
     private void saveMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveMenuItemActionPerformed
         // TODO add your handling code here:
-        JFrmOtro otro = new JFrmOtro();
-        this.desktopPane.add(otro);
-        otro.setVisible(true);
+        JFrmSeccion frmseccion = new JFrmSeccion();
+        this.desktopPane.add(frmseccion);
+        frmseccion.setVisible(true);
+        SeccionControlador contro = new SeccionControlador(frmseccion);
         
     }//GEN-LAST:event_saveMenuItemActionPerformed
 
@@ -175,6 +210,29 @@ public class MdiAdmin extends javax.swing.JFrame {
         frmmaestro.setVisible(true);
         MaestroControlador contro = new MaestroControlador(frmmaestro);
     }//GEN-LAST:event_jCbMaestroActionPerformed
+
+    private void exitMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItem1ActionPerformed
+        JFrmGrado frmgrado = new JFrmGrado();
+        this.desktopPane.add(frmgrado);
+        frmgrado.setVisible(true);
+        GradoControlador contro = new GradoControlador(frmgrado);
+    }//GEN-LAST:event_exitMenuItem1ActionPerformed
+
+    private void exitMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        JFrmUnidad frmunidad = new JFrmUnidad();
+        this.desktopPane.add(frmunidad);
+        frmunidad.setVisible(true);
+        UnidadControlador contro = new UnidadControlador(frmunidad);
+    }//GEN-LAST:event_exitMenuItem2ActionPerformed
+
+    private void exitMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        JFrmNotas frmnotas = new JFrmNotas();
+        this.desktopPane.add(frmnotas);
+        frmnotas.setVisible(true);
+        NotasControlador contro = new NotasControlador(frmnotas);
+    }//GEN-LAST:event_exitMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -220,6 +278,9 @@ public class MdiAdmin extends javax.swing.JFrame {
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu editMenu;
     private javax.swing.JMenuItem exitMenuItem;
+    private javax.swing.JMenuItem exitMenuItem1;
+    private javax.swing.JMenuItem exitMenuItem2;
+    private javax.swing.JMenuItem exitMenuItem3;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JMenuItem jCbMaestro;

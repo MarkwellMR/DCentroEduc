@@ -10,20 +10,22 @@ package com.centroeduc.model;
  * @author Usuario
  */
 public class Grado {
-    private Integer cod_grado;
+
+    private Integer codigo;
     private String descripcion;
+    private Integer estado;
 
     public Grado() {
-        this.cod_grado =null;
-        this.descripcion =null;
+        this.codigo = null;
+        this.descripcion = null;
     }
 
-    public Integer getCod_grado() {
-        return cod_grado;
+    public Integer getCodigo() {
+        return codigo;
     }
 
-    public void setCod_grado(Integer cod_grado) {
-        this.cod_grado = cod_grado;
+    public void setCodigo(Integer codigo) {
+        this.codigo = codigo;
     }
 
     public String getDescripcion() {
@@ -34,11 +36,17 @@ public class Grado {
         this.descripcion = descripcion;
     }
 
+    public Integer getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Integer estado) {
+        this.estado = estado;
+    }
+
     @Override
     public String toString() {
-        return "Grado{" + "cod_grado=" + cod_grado + ", descripcion=" + descripcion + '}';
+        return "Grado{" + "codigo=" + codigo + ", descripcion=" + descripcion + '}';
     }
-    
-    
 
 }

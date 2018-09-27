@@ -25,5 +25,12 @@ public class Maestro extends Persona {
     public void setEstado(Integer estado) {
         this.estado = estado;
     }
+
+    @Override
+    public String toString() {
+        return "Maestro{" + "codigoA=" + codigoA + ", estado=" + estado + '}';
+    }
+    
+    
     
 }
