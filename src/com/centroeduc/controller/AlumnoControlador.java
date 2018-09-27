@@ -9,27 +9,32 @@ import com.centroeduc.dao.AlumnoDAO;
 import com.centroeduc.model.Alumno;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import vista.JFrmAlumno;
+import vista.JFrmAlumnoSave;
+import vista.MdiAdmin;
 
 /**
  *
  * @author javam2018
  */
-public class AlumnoControlador implements ActionListener {
+public class AlumnoControlador implements ActionListener, MouseListener {
 
-    JFrmAlumno alumno = new JFrmAlumno();
+    JFrmAlumnoSave alumno = new JFrmAlumnoSave();
     AlumnoDAO dao = new AlumnoDAO();
     Alumno dato = new Alumno();
 
-    public AlumnoControlador(JFrmAlumno form) {
+    public AlumnoControlador(JFrmAlumnoSave form) {
         this.alumno = form;
         this.alumno.jBtnGuardar.addActionListener(this);
+        this.alumno.jBtnModificars.addActionListener(this);
+        this.alumno.jTblAlumno.addMouseListener(this);
+        this.alumno.jBtnEstado.addActionListener(this);
         listaAlumno();
     }
-
     @Override
     public void actionPerformed(ActionEvent evento) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -38,8 +43,16 @@ public class AlumnoControlador implements ActionListener {
             guardarAlumno();
 
         }
+        if (evento.getSource()==this.alumno.jBtnModificars) {
+            modificarAlumno();
+        }
+        if (evento.getSource()==this.alumno.jBtnEstado) {
+            estado();
+            
+        }
+        
+       
     }
-
     public void guardarAlumno() {
         String mensaje = null;
         dato.setNombre(this.alumno.jTxtNombre.getText());
@@ -93,6 +106,36 @@ public class AlumnoControlador implements ActionListener {
             
         }
     }
+    public void modificarAlumno(){
+        String mensaje = null;
+        dato.setCodAlumno(Integer.parseInt(this.alumno.jTxtCodAl.getText()));
+        dato.setNombre(this.alumno.jTxtNombre.getText());
+        dato.setApellido(this.alumno.jTxtApellido.getText());
+        dato.setDireccion(this.alumno.jTxtDireccion.getText());
+        dato.setEmail(this.alumno.jTxtEmail.getText());
+        dato.setTelEmergencia(Integer.parseInt(this.alumno.jTxtTelEmergencia.getText()));
+        dato.setCodEncargado(this.alumno.jTxtCodEncargado.getText());
+        dato.setCodSecretaria(this.alumno.jTxtCodSecretaria.getText());
+        dato.setFechanac(this.alumno.jTxtFechaNac.getText());
+        dato.setPadecimiento(this.alumno.jTxtAPadecimiento.getText());
+        
+        mensaje = dao.modificarAlumno(dato);
+        
+        JOptionPane.showMessageDialog(null, mensaje);
+        limpiarControles();
+        listaAlumno();  
+        
+        
+    }
+    public void estado(){
+        String mensaje = null;
+        dato.setCodAlumno(Integer.parseInt(this.alumno.jTxtCodAl.getText()));
+        mensaje=dao.estadoAlumno(dato);
+        
+        JOptionPane.showMessageDialog(null, mensaje);
+        limpiarControles();
+        listaAlumno();
+    }
 
     public void limpiarControles() {
         alumno.jTxtNombre.setText(null);
@@ -106,5 +149,43 @@ public class AlumnoControlador implements ActionListener {
         alumno.jTxtAPadecimiento.setText(null);
 
     }
+    @Override
+    public void mouseClicked(MouseEvent me) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (me.getSource()==alumno.jTblAlumno) {
+            alumno.jTxtCodAl.setText(alumno.jTblAlumno.getValueAt(alumno.jTblAlumno.getSelectedRow(), 0).toString());
+            alumno.jTxtNombre.setText(alumno.jTblAlumno.getValueAt(alumno.jTblAlumno.getSelectedRow(), 1).toString());
+            alumno.jTxtApellido.setText(alumno.jTblAlumno.getValueAt(alumno.jTblAlumno.getSelectedRow(), 2).toString());
+            alumno.jTxtDireccion.setText(alumno.jTblAlumno.getValueAt(alumno.jTblAlumno.getSelectedRow(), 3).toString());
+            alumno.jTxtEmail.setText(alumno.jTblAlumno.getValueAt(alumno.jTblAlumno.getSelectedRow(), 4).toString());
+            alumno.jTxtTelEmergencia.setText(alumno.jTblAlumno.getValueAt(alumno.jTblAlumno.getSelectedRow(), 5).toString());
+            alumno.jTxtCodEncargado.setText(alumno.jTblAlumno.getValueAt(alumno.jTblAlumno.getSelectedRow(), 6).toString());
+            alumno.jTxtCodSecretaria.setText(alumno.jTblAlumno.getValueAt(alumno.jTblAlumno.getSelectedRow(), 7).toString());
+            alumno.jTxtFechaNac.setText(alumno.jTblAlumno.getValueAt(alumno.jTblAlumno.getSelectedRow(), 8).toString());
+            alumno.jTxtAPadecimiento.setText(alumno.jTblAlumno.getValueAt(alumno.jTblAlumno.getSelectedRow(), 9).toString());
+ 
+        }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent me) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent me) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent me) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mouseExited(MouseEvent me) {
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }
+
