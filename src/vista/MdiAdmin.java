@@ -12,10 +12,12 @@ import com.centroeduc.controller.GradoControlador;
 
 import com.centroeduc.controller.AlumnoGradoControlador;
 import com.centroeduc.controller.CursoControlador;
+import com.centroeduc.controller.EncargadoControlador;
 
 import com.centroeduc.controller.MaestroControlador;
 import com.centroeduc.controller.NotasControlador;
 import com.centroeduc.controller.SeccionControlador;
+import com.centroeduc.controller.SecreControlador;
 import com.centroeduc.controller.UnidadControlador;
 
 /**
@@ -54,6 +56,8 @@ public class MdiAdmin extends javax.swing.JFrame {
         exitMenuItem1 = new javax.swing.JMenuItem();
         exitMenuItem2 = new javax.swing.JMenuItem();
         exitMenuItem3 = new javax.swing.JMenuItem();
+        jMSecretaria = new javax.swing.JMenuItem();
+        jMEncargado = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
         cutMenuItem = new javax.swing.JMenuItem();
         copyMenuItem = new javax.swing.JMenuItem();
@@ -69,7 +73,7 @@ public class MdiAdmin extends javax.swing.JFrame {
         fileMenu.setText("File");
 
         openMenuItem.setMnemonic('o');
-        openMenuItem.setText("Open");
+        openMenuItem.setText("Administrador");
         openMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 openMenuItemActionPerformed(evt);
@@ -162,6 +166,22 @@ public class MdiAdmin extends javax.swing.JFrame {
             }
         });
         fileMenu.add(exitMenuItem3);
+
+        jMSecretaria.setText("Secretaria");
+        jMSecretaria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMSecretariaActionPerformed(evt);
+            }
+        });
+        fileMenu.add(jMSecretaria);
+
+        jMEncargado.setText("Encargado");
+        jMEncargado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMEncargadoActionPerformed(evt);
+            }
+        });
+        fileMenu.add(jMEncargado);
 
         menuBar.add(fileMenu);
 
@@ -289,6 +309,22 @@ public class MdiAdmin extends javax.swing.JFrame {
 
     }//GEN-LAST:event_AlumnoActionPerformed
 
+    private void jMSecretariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMSecretariaActionPerformed
+        // TODO add your handling code here:
+        JFrmSecre frmsecre = new JFrmSecre();
+        this.desktopPane.add(frmsecre);
+        frmsecre.setVisible(true);
+        SecreControlador controlador = new SecreControlador(frmsecre);
+    }//GEN-LAST:event_jMSecretariaActionPerformed
+
+    private void jMEncargadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMEncargadoActionPerformed
+        // TODO add your handling code here:
+        JFrmEncargado encargado = new JFrmEncargado();
+        this.desktopPane.add(encargado);
+        encargado.setVisible(true);
+        EncargadoControlador controlador = new EncargadoControlador(encargado);
+    }//GEN-LAST:event_jMEncargadoActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -343,6 +379,8 @@ public class MdiAdmin extends javax.swing.JFrame {
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JMenuItem jCbMaestro;
+    private javax.swing.JMenuItem jMEncargado;
+    private javax.swing.JMenuItem jMSecretaria;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem openMenuItem;
     private javax.swing.JMenuItem pasteMenuItem;

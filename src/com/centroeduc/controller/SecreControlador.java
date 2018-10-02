@@ -105,7 +105,8 @@ public class SecreControlador implements ActionListener, MouseListener {
 
     }
       public void editarSecre(){
-         String mensaje = null;                  
+         String mensaje = null;  
+         
         datosS.setNombre(this.logica.jTxtNombreS.getText());
         datosS.setApellido(this.logica.jTxtApellidoS.getText());
         datosS.setDireccion(this.logica.jTxtDireccionS.getText());
@@ -129,6 +130,7 @@ public class SecreControlador implements ActionListener, MouseListener {
       
       public void cambio(){
           String mensaje = null;
+          
           datosS.setCodigo(this.logica.jTxtCodigoS.getText());
           mensaje = daoS.estado(datosS);
 

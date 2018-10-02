@@ -58,6 +58,8 @@ public class JFrmSecre extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximizable(true);
+        setResizable(true);
 
         jLblCodigo.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLblCodigo.setText("Código:");
@@ -152,7 +154,7 @@ public class JFrmSecre extends javax.swing.JInternalFrame {
 
         jBtnActualizarS.setText("Actualizar");
 
-        jBtnEliminarS.setText("Eliminar");
+        jBtnEliminarS.setText("Estado");
 
         jTxtEmailS.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jTxtEmailS.addActionListener(new java.awt.event.ActionListener() {
@@ -350,6 +352,10 @@ public class JFrmSecre extends javax.swing.JInternalFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(JFrmSecre.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
