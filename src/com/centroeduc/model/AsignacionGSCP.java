@@ -2,7 +2,7 @@
 package com.centroeduc.model;
 
 
-public class AsignacionGSCP {
+public class AsignacionGSCP extends DatosProfesor{
     public Integer codigo;
     public Integer cdGrado;
     public Integer cdSecc;

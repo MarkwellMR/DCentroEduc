@@ -5,7 +5,9 @@
  */
 package com.centroeduc.controller;
 
+import com.centroeduc.dao.AlumnoDAO;
 import com.centroeduc.dao.AlumnoGradoDAO;
+import com.centroeduc.model.Alumno;
 import com.centroeduc.model.AlumnoGrado;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -31,6 +33,9 @@ public class AlumnoGradoControlador implements ActionListener {
     public AlumnoGradoControlador(JFrmAlumnoGrado form) {
         this.grado = form;
         this.grado.jBtnGuardar.addActionListener(this);
+        this.grado.jCmbxNombre.addActionListener(this);
+        this.grado.jCbxCodCGSP.addActionListener(this);
+        ocultarComboBox();
         listaAlumnoGrado();
         cargarDatos();
 
@@ -44,13 +49,17 @@ public class AlumnoGradoControlador implements ActionListener {
             JOptionPane.showMessageDialog(null,"hola");
             guardarAlumnGrad();
         }
+        if (evento.getSource()==this.grado.jCmbxNombre) {
+            this.grado.jCbxCodAlumn.setSelectedIndex(this.grado.jCmbxNombre.getSelectedIndex());
+            
+        }
 
     }
 
     public void guardarAlumnGrad() {
         String mensaje = null;
         
-        mensaje = dao.asignarAG(Integer.parseInt(this.grado.jCbxNomAlumn.getSelectedItem().toString()), Integer.parseInt(this.grado.jCbxCodCGSP.getSelectedItem().toString()), Integer.parseInt(this.grado.jTxtCiclo.getText()));
+        mensaje = dao.asignarAG(Integer.parseInt(this.grado.jCbxCodAlumn.getSelectedItem().toString()), Integer.parseInt(this.grado.jCbxCodCGSP.getSelectedItem().toString()), Integer.parseInt(this.grado.jTxtCiclo.getText()));
         
                 
         JOptionPane.showMessageDialog(null, mensaje);
@@ -60,26 +69,33 @@ public class AlumnoGradoControlador implements ActionListener {
         cargarDatos();
        
     }
+    public void ocultarComboBox(){
+        //oculta el combobox de codigo alumno
+        this.grado.jCbxCodAlumn.setVisible(false);
+    }
     public void cargarDatos (){
-       ArrayList<AlumnoGrado> list = new ArrayList();
-       list=dao.DatosAlumnoGrado();
-       DefaultComboBoxModel modelo = new DefaultComboBoxModel();
-       DefaultComboBoxModel model = new DefaultComboBoxModel();
-        for (int i = 0; i < list.size(); i++) {
-            
-            modelo.addElement(list.get(i).CodAlumnos);
-            model.addElement(list.get(i).Ccursgradsecprof);
-            System.out.println("mostrar ALUMNO"+list.get(i).CodAlumnos);
-            System.out.println("mostrar CGSP"+ list.get(i).Ccursgradsecprof);
-            
-            
+       ArrayList<AlumnoGrado> listaAlumGrad = new ArrayList();
+       ArrayList<Alumno> listaAlumno = new ArrayList();
+       
+       AlumnoGradoDAO alumnogradodao = new AlumnoGradoDAO();
+       AlumnoDAO alumnodao = new AlumnoDAO();
+       
+       DefaultComboBoxModel alumgrad = new DefaultComboBoxModel();
+       DefaultComboBoxModel codAlumno = new DefaultComboBoxModel();
+       DefaultComboBoxModel alumno = new DefaultComboBoxModel();
+       
+       listaAlumno = alumnodao.mostrarAlumno();
+        for (int i = 0; i <listaAlumno.size(); i++) {
+            alumno.addElement(listaAlumno.get(i).getNombre()+" "+listaAlumno.get(i).getApellido());
+            codAlumno.addElement(listaAlumno.get(i).getCodAlumno());
         }
-        
-        this.grado.jCbxNomAlumn.setModel(modelo);
-        this.grado.jCbxCodCGSP.setModel(model);
-         
-
-        
+        listaAlumGrad= alumnogradodao.MostrarDatosAlumnosGrado();
+        for (int i = 0; i <listaAlumGrad.size(); i++) {
+            alumgrad.addElement(listaAlumGrad.get(i).getCcursgradsecprof());
+        }
+        grado.jCbxCodAlumn.setModel(codAlumno);
+        grado.jCmbxNombre.setModel(alumno);
+        grado.jCbxCodCGSP.setModel(alumgrad);
     }
    
     public void listaAlumnoGrado(){
@@ -88,16 +104,18 @@ public class AlumnoGradoControlador implements ActionListener {
         DefaultTableModel tabla = new DefaultTableModel();
         this.grado.jTblAlumnGrad.setModel(tabla);
         tabla.addColumn("Codigo de Alumno Grado");
-        tabla.addColumn("Codigo de Alumnos");
+        tabla.addColumn("Nombre");
+        tabla.addColumn("Apellido");
         tabla.addColumn("Codigo de CGSP");
         tabla.addColumn("Ciclo");
         
-        Object[] columna = new Object[10];
+        Object[] columna = new Object[5];
         for (int i = 0; i < list.size(); i++) {
             columna[0] = list.get(i).getCodAlumnoGrado();
-            columna[1] = list.get(i).getCodAlumnos();
-            columna[2] = list.get(i).getCcursgradsecprof();
-            columna[3] = list.get(i).getYear();
+            columna[1] = list.get(i).getNombre_alumnograd();
+            columna[2]=list.get(i).getApellido_alumnograd();
+            columna[3] = list.get(i).getCcursgradsecprof();
+            columna[4] = list.get(i).getYear();
             
             tabla.addRow(columna);
         }
