@@ -87,8 +87,9 @@ public class EncargadoControlador implements ActionListener, MouseListener{
         }
         
         public void guardarEncargado(){
-            String mensaje = null;
             
+            String mensaje = null;
+
             encargado.setCodigo(this.logica.jTxtCodigoE.getText());
             encargado.setNombre(this.logica.jTxtNombreE.getText());
             encargado.setApellido(this.logica.jTxtApellidoE.getText());
@@ -102,6 +103,7 @@ public class EncargadoControlador implements ActionListener, MouseListener{
             encargado.setEstado(1);
             
             mensaje = daoE.nuevoEncargado(encargado, secre);
+            
             
                 JOptionPane.showMessageDialog(null, mensaje);
                 limpiarControles();
@@ -124,7 +126,7 @@ public class EncargadoControlador implements ActionListener, MouseListener{
             encargado.setEstado(1);
             
             
-            mensaje = daoE.UpEnc(encargado);
+            mensaje = daoE.UpEnc(encargado,secre);
             
             JOptionPane.showMessageDialog(null, mensaje);
             limpiarControles();

@@ -1,4 +1,3 @@
-
 package com.centroeduc.controller;
 
 import com.centroeduc.dao.AdminDAO;
@@ -12,10 +11,6 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import vista.JFrmAdmin;
 
-/**
- *
- * @author javam2018
- */
 public class AdminControlador implements ActionListener, MouseListener {
 
     //atributos
@@ -45,10 +40,11 @@ public class AdminControlador implements ActionListener, MouseListener {
     }
     
     public void listaAdmin(){
+         DefaultTableModel tabla = new DefaultTableModel();
          ArrayList<Administrador> list = new ArrayList();
         list = dao.listAdmin();
         
-        DefaultTableModel tabla = new DefaultTableModel();
+       
         this.logica.jTblAdmin.setModel(tabla);//asignando el modelo a la tabla
         
         //AGREGAR TITULOS A LA TABLA
@@ -146,8 +142,7 @@ public class AdminControlador implements ActionListener, MouseListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        System.out.println("llegue");
-        
+        System.out.println("llegue");        
         String evento = e.getActionCommand();
         
         if(evento.equals("Guardar")){

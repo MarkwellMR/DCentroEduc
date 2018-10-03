@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class EncargadoDAO extends Conexion {
     
-     private String sql;
+    private String sql;
     private PreparedStatement run;
     private String answer=null;
     ResultSet resultado;
@@ -20,11 +20,12 @@ public class EncargadoDAO extends Conexion {
     Encargado encargado = new Encargado();
     Secretaria secre = new Secretaria();
 
-    public String nuevoEncargado(Encargado encargado, Secretaria secre) {        
+    public String nuevoEncargado(Encargado encargado, Secretaria secre) {  
+        System.out.println(encargado.toString());
         try {
             this.Conectar();
             System.out.println("DAO ENCARGADO");
-            sql = "insert into encargado values(?,?,?,?,?,?,?,?,?,?)";
+            sql = "INSERT INTO encargado VALUES(?,?,?,?,?,?,?,?,?,?,?)";
             run = this.getMiconexion().prepareStatement(sql);
             
             run.setString(1, encargado.getCodigo());
@@ -37,13 +38,15 @@ public class EncargadoDAO extends Conexion {
             run.setString(8, encargado.getFechanac());
             run.setLong(9, encargado.getCui());
             run.setInt(10, 1);
-            run.setString(10,secre.getCodigo() );
+            run.setString(11, secre.getCodigo() );
             
             run.executeUpdate();
             answer = "Dato almacenado";
+            
         } catch (SQLException e) {
-            answer = "dato no guardado" + e;
+            answer = "dato no guardado" + e;            
             System.out.println("error "+e);
+            
         } finally {
             this.cerrarConex();
         }
@@ -71,7 +74,8 @@ public class EncargadoDAO extends Conexion {
                 enc.setTelMovil(resultado.getInt("tel_movil"));
                 enc.setFechanac(resultado.getString("fechanac"));
                 enc.setCui(resultado.getLong("cui"));
-                enc.setEstado(resultado.getInt("estado"));
+                enc.setEstado(resultado.getInt("estado"));                
+                enc.setCodS(resultado.getString("cod_secre"));
                 System.out.println(resultado.getString("cod_secre"));
                 
                 lista.add(enc);
@@ -87,10 +91,12 @@ public class EncargadoDAO extends Conexion {
 
     
 
-    public String UpEnc(Encargado encargado) {
+    public String UpEnc(Encargado encargado, Secretaria secre) {
+        answer = null;
+        
         try {
             this.Conectar();
-            sql = "update encargado set nombre=?, apellido=?, direccion=?, email=?, tel_casa=?, tel_movil=?, fechanac=?, cui=? where cod_enc=?";
+            sql = "update encargado set nombre=?, apellido=?, direccion=?, email=?, tel_casa=?, tel_movil=?, fechanac=?, cui=?, cod_secre=? where cod_enc=?";
             run = this.getMiconexion().prepareStatement(sql);
 
             run.setString(1, encargado.getNombre());
@@ -101,9 +107,8 @@ public class EncargadoDAO extends Conexion {
             run.setInt(6, encargado.getTelMovil());
             run.setString(7, encargado.getFechanac());
             run.setLong(8, encargado.getCui());
-            run.setString(9, encargado.getPass());
-            run.setString(10, secre.getCodigo());
-            run.setString(11, encargado.getCodigo());
+            run.setString(9, secre.getCodigo());
+            run.setString(10, encargado.getCodigo());
             
             run.executeUpdate();
             answer = "Registro Actualizado";
