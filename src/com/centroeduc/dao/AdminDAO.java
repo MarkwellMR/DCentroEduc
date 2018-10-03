@@ -14,7 +14,6 @@ public class AdminDAO extends Conexion{
     private PreparedStatement ejecutar;
     private String respuesta;
     ResultSet valores;
-    
     Administrador admin = new Administrador();
     
     //almacena los datos

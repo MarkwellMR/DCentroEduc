@@ -41,31 +41,34 @@ public class AlumnoGradoDAO extends Conexion {
         }
         return respuesta;
     }
+    //mostrar datos en la tabla
     public ArrayList<AlumnoGrado> MostrarDatosAlumnosGrado() {
         ArrayList<AlumnoGrado> lista = new ArrayList();
         try {
             this.Conectar();
-            sql = "select* from alumnogrado";
+            sql = "select* from datos_alumnogrado";
             ejecutar = this.getMiconexion().prepareStatement(sql);
             valores = this.ejecutar.executeQuery();
             while (valores.next()) {
                 AlumnoGrado algr = new AlumnoGrado();
                 algr.setCodAlumnoGrado(valores.getInt("cod_alumn_grad"));
-                algr.setCodAlumnos(valores.getInt("cod_alumn"));
-                algr.setCcursgradsecprof(valores.getInt("cod_curs_grad_sec_prof"));
+                algr.setCodAlumnos(valores.getInt("cod_alumno"));
+                algr.setNombre_alumnograd(valores.getString("nombre"));
+                algr.setApellido_alumnograd(valores.getString("apellido"));
+                algr.setCcursgradsecprof(valores.getInt("codigo_curs_grad_sec_prof"));
                 algr.setYear(valores.getInt("ciclo"));
 
                 lista.add(algr);
 
             }
         } catch (SQLException e) {
-            System.out.println("error en mostrar datos Alumnos Grado" + e);
+            System.out.println("error en mostrar datos Alumnos Grado :::::" + e);
         } finally {
             this.cerrarConex();
         }
         return lista;
     }
-    
+    //mostrar datos en los combobox
     public ArrayList<AlumnoGrado> DatosAlumnoGrado() {
         ArrayList<AlumnoGrado> lista = new ArrayList();
         try {

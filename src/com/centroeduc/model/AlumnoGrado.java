@@ -1,6 +1,6 @@
 package com.centroeduc.model;
 
-public class AlumnoGrado  {
+public class AlumnoGrado extends DatosAlumnoGrado {
     
     public Integer CodAlumnoGrado;
     public Integer Ccursgradsecprof;
@@ -8,7 +8,6 @@ public class AlumnoGrado  {
     public Integer CodAlumnos;
 
     public AlumnoGrado() {
-       
         this.Ccursgradsecprof = null;
         this.year = null;
         this.CodAlumnoGrado = null;

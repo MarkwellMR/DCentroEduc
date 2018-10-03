@@ -34,12 +34,13 @@ public class JFrmAlumnoGrado extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jCbxNomAlumn = new javax.swing.JComboBox<>();
+        jCbxCodAlumn = new javax.swing.JComboBox<>();
         jCbxCodCGSP = new javax.swing.JComboBox<>();
         jBtnGuardar = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTblAlumnGrad = new javax.swing.JTable();
         jTxtCiclo = new javax.swing.JTextField();
+        jCmbxNombre = new javax.swing.JComboBox<>();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox1.addItemListener(new java.awt.event.ItemListener() {
@@ -48,26 +49,30 @@ public class JFrmAlumnoGrado extends javax.swing.JInternalFrame {
             }
         });
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Bookman Old Style", 1, 48)); // NOI18N
         jLabel1.setText("Alumnos Asignados a Grados");
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Bookman Old Style", 0, 20)); // NOI18N
         jLabel2.setText("Nombre del Alumno:");
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Bookman Old Style", 0, 20)); // NOI18N
         jLabel3.setText("Codigo de CGSP:");
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Bookman Old Style", 0, 20)); // NOI18N
         jLabel4.setText("Ciclo Escolar:");
 
-        jCbxNomAlumn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jCbxNomAlumn.addActionListener(new java.awt.event.ActionListener() {
+        jCbxCodAlumn.setFont(new java.awt.Font("Bookman Old Style", 0, 13)); // NOI18N
+        jCbxCodAlumn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCbxCodAlumn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCbxNomAlumnActionPerformed(evt);
+                jCbxCodAlumnActionPerformed(evt);
             }
         });
 
+        jCbxCodCGSP.setFont(new java.awt.Font("Bookman Old Style", 0, 13)); // NOI18N
         jCbxCodCGSP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jCbxCodCGSP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,9 +80,10 @@ public class JFrmAlumnoGrado extends javax.swing.JInternalFrame {
             }
         });
 
-        jBtnGuardar.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jBtnGuardar.setFont(new java.awt.Font("Bookman Old Style", 0, 14)); // NOI18N
         jBtnGuardar.setText("Guardar");
 
+        jTblAlumnGrad.setFont(new java.awt.Font("Bookman Old Style", 0, 13)); // NOI18N
         jTblAlumnGrad.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {}
@@ -88,15 +94,17 @@ public class JFrmAlumnoGrado extends javax.swing.JInternalFrame {
         ));
         jScrollPane4.setViewportView(jTblAlumnGrad);
 
+        jTxtCiclo.setFont(new java.awt.Font("Bookman Old Style", 0, 13)); // NOI18N
+
+        jCmbxNombre.setFont(new java.awt.Font("Bookman Old Style", 0, 13)); // NOI18N
+        jCmbxNombre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(350, 350, 350)
-                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(261, 261, 261)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,26 +113,31 @@ public class JFrmAlumnoGrado extends javax.swing.JInternalFrame {
                             .addComponent(jLabel4))
                         .addGap(33, 33, 33)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCbxNomAlumn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jCbxCodCGSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTxtCiclo, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jCmbxNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jCbxCodAlumn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jTxtCiclo, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jCbxCodCGSP, javax.swing.GroupLayout.Alignment.LEADING, 0, 121, Short.MAX_VALUE))
+                            .addComponent(jBtnGuardar)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(329, 329, 329)
-                        .addComponent(jBtnGuardar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(138, 138, 138)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 629, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(207, Short.MAX_VALUE))
+                        .addGap(170, 170, 170)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane4))))
+                .addContainerGap(190, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jCbxNomAlumn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jCbxCodAlumn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCmbxNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -133,11 +146,11 @@ public class JFrmAlumnoGrado extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTxtCiclo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addGap(36, 36, 36)
+                .addGap(35, 35, 35)
                 .addComponent(jBtnGuardar)
-                .addGap(45, 45, 45)
+                .addGap(33, 33, 33)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
 
         pack();
@@ -148,9 +161,9 @@ public class JFrmAlumnoGrado extends javax.swing.JInternalFrame {
 // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ItemStateChanged
 
-    private void jCbxNomAlumnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCbxNomAlumnActionPerformed
+    private void jCbxCodAlumnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCbxCodAlumnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCbxNomAlumnActionPerformed
+    }//GEN-LAST:event_jCbxCodAlumnActionPerformed
 
     private void jCbxCodCGSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCbxCodCGSPActionPerformed
         
@@ -183,6 +196,8 @@ public class JFrmAlumnoGrado extends javax.swing.JInternalFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -194,8 +209,9 @@ public class JFrmAlumnoGrado extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton jBtnGuardar;
+    public javax.swing.JComboBox<String> jCbxCodAlumn;
     public javax.swing.JComboBox<String> jCbxCodCGSP;
-    public javax.swing.JComboBox<String> jCbxNomAlumn;
+    public javax.swing.JComboBox<String> jCmbxNombre;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
