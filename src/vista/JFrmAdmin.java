@@ -64,25 +64,31 @@ public class JFrmAdmin extends javax.swing.JInternalFrame {
         jLabel2.setText("Administrador");
 
         jTxtCodigo.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        jTxtCodigo.setText("A0020");
+        jTxtCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTxtCodigoActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLabel3.setText("Nombre:");
 
         jTxtNombre.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        jTxtNombre.setText("Juanito");
+        jTxtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTxtNombreActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLabel4.setText("Apellido:");
 
         jTxtApellido.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        jTxtApellido.setText("Perez");
 
         jLabel5.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLabel5.setText("Dirección:");
 
         jTxtDireccion.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        jTxtDireccion.setText("por la san Juan");
         jTxtDireccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTxtDireccionActionPerformed(evt);
@@ -93,28 +99,23 @@ public class JFrmAdmin extends javax.swing.JInternalFrame {
         jLabel6.setText("Correo Electronico:");
 
         jTxtEmail.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        jTxtEmail.setText("juanito@gmail.com");
 
         jLabel7.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLabel7.setText("Tel. Casa:");
 
         jTxtTelCasa.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        jTxtTelCasa.setText("22222222");
 
         jLabel8.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLabel8.setText("Tel. Movil:");
 
         jTxtTelMovil.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        jTxtTelMovil.setText("32145698");
 
         jLabel9.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLabel9.setText("Fecha Nac.");
 
         jTxtFechaNac.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        jTxtFechaNac.setText("1999/05/05");
 
         jTxtCui.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        jTxtCui.setText("21456987456321");
 
         jLabel10.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLabel10.setText("Cui:");
@@ -303,6 +304,14 @@ public class JFrmAdmin extends javax.swing.JInternalFrame {
     private void jBtnEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnEstadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jBtnEstadoActionPerformed
+
+    private void jTxtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtCodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTxtCodigoActionPerformed
+
+    private void jTxtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTxtNombreActionPerformed
 
     /**
      * @param args the command line arguments
