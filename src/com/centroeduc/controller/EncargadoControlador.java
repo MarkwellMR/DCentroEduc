@@ -89,7 +89,14 @@ public class EncargadoControlador implements ActionListener, MouseListener{
         public void guardarEncargado(){
             
             String mensaje = null;
-
+            //obtener los valores del calendario
+            String anio = Integer.toString(this.logica.jDCFechanac.getCalendar().get(java.util.Calendar.YEAR));
+            String mes = Integer.toString(this.logica.jDCFechanac.getCalendar().get(java.util.Calendar.MONTH)+1);
+            String dia = Integer.toString(this.logica.jDCFechanac.getCalendar().get(java.util.Calendar.DATE));
+            
+            //convirtiendo al formato deseado
+            String fechaseleccionada = anio+"/"+mes+"/"+dia;
+            
             encargado.setCodigo(this.logica.jTxtCodigoE.getText());
             encargado.setNombre(this.logica.jTxtNombreE.getText());
             encargado.setApellido(this.logica.jTxtApellidoE.getText());
@@ -97,10 +104,13 @@ public class EncargadoControlador implements ActionListener, MouseListener{
             encargado.setEmail(this.logica.jTxtEmailE.getText());
             encargado.setTelCasa(Integer.parseInt(this.logica.jTxtTelCasaE.getText()));
             encargado.setTelMovil(Integer.parseInt(this.logica.jTxtTelMovilE.getText()));
-            encargado.setFechanac(this.logica.jTxtFechaNacE.getText());
+            //encargado.setFechanac(this.logica.jTxtFechaNacE.getText());
+            encargado.setFechanac(fechaseleccionada);
             encargado.setCui(Long.parseLong(this.logica.jTxtCuiE.getText()));              
             secre.setCodigo(this.logica.jTxtCodS.getText());
             encargado.setEstado(1);
+            
+           //JOptionPane.showMessageDialog(null, encargado.getFechanac());
             
             mensaje = daoE.nuevoEncargado(encargado, secre);
             
