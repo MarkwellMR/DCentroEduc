@@ -5,6 +5,9 @@
  */
 package vista;
 
+import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author javam2018
@@ -74,11 +77,21 @@ public class JFrmEncargado extends javax.swing.JInternalFrame {
                 jTxtNombreEActionPerformed(evt);
             }
         });
+        jTxtNombreE.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTxtNombreEKeyTyped(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLabel4.setText("Apellido:");
 
         jTxtApellidoE.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        jTxtApellidoE.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTxtApellidoEKeyTyped(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLabel5.setText("Dirección:");
@@ -94,16 +107,31 @@ public class JFrmEncargado extends javax.swing.JInternalFrame {
         jLabel6.setText("Email:");
 
         jTxtEmailE.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        jTxtEmailE.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTxtEmailEFocusLost(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLabel7.setText("Tel. Casa:");
 
         jTxtTelCasaE.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        jTxtTelCasaE.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTxtTelCasaEKeyTyped(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLabel8.setText("Tel. Movil:");
 
         jTxtTelMovilE.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        jTxtTelMovilE.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTxtTelMovilEKeyTyped(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLabel9.setText("Fecha Nac.");
@@ -111,6 +139,11 @@ public class JFrmEncargado extends javax.swing.JInternalFrame {
         jTxtFechaNacE.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
 
         jTxtCuiE.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        jTxtCuiE.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTxtCuiEKeyTyped(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLabel10.setText("Cui:");
@@ -195,13 +228,12 @@ public class JFrmEncargado extends javax.swing.JInternalFrame {
                                         .addComponent(jTxtCodS, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, Short.MAX_VALUE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel2)
                                         .addGap(109, 109, 109))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(jLabel1)))
+                                    .addComponent(jLabel1))
                                 .addGap(18, 18, 18)
                                 .addComponent(jTxtCodigoE, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
@@ -295,7 +327,69 @@ public class JFrmEncargado extends javax.swing.JInternalFrame {
 
     private void jTxtNombreEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtNombreEActionPerformed
         // TODO add your handling code here:
+      
+        
     }//GEN-LAST:event_jTxtNombreEActionPerformed
+
+    private void jTxtNombreEKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtNombreEKeyTyped
+             
+        char c = evt.getKeyChar();
+        
+        if ((c<'a'|| c>'z' ) && (c<'A'|| c>'Z' ) && (c!=(char)KeyEvent.VK_BACK_SPACE) && (c!=(char)KeyEvent.VK_SPACE)){            
+                evt.consume();
+                JOptionPane.showMessageDialog(null, "Solo se permiten letras", "validar letras", JOptionPane.INFORMATION_MESSAGE);
+        } 
+        
+    }//GEN-LAST:event_jTxtNombreEKeyTyped
+
+    private void jTxtTelMovilEKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtTelMovilEKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        
+        if ((c<'0'|| c>'9' ) && (c!=(char)KeyEvent.VK_BACK_SPACE)){
+            evt.consume();
+             JOptionPane.showMessageDialog(null, "Solo se permiten numeros", "validar numeros", JOptionPane.INFORMATION_MESSAGE);
+            
+        }
+        
+    }//GEN-LAST:event_jTxtTelMovilEKeyTyped
+
+    private void jTxtCuiEKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtCuiEKeyTyped
+        // TODO add your handling code here:
+        
+        char c = evt.getKeyChar();
+        
+        if (c<'0'|| c>'9' ) evt.consume();
+    }//GEN-LAST:event_jTxtCuiEKeyTyped
+
+    private void jTxtTelCasaEKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtTelCasaEKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        
+        if (c<'0'|| c>'9' ) evt.consume();
+    }//GEN-LAST:event_jTxtTelCasaEKeyTyped
+
+    private void jTxtApellidoEKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtApellidoEKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        
+        if ((c<'a'|| c>'z' ) && (c<'A'|| c>'Z' ) && (c!=(char)KeyEvent.VK_BACK_SPACE) && (c!=(char)KeyEvent.VK_SPACE)){            
+                evt.consume();
+                JOptionPane.showMessageDialog(null, "Solo se permiten letras", "validar letras", JOptionPane.INFORMATION_MESSAGE);
+        } 
+    }//GEN-LAST:event_jTxtApellidoEKeyTyped
+                
+//            public boolean email(String correo){
+//                pattern pat = null;
+//                Matcher mat= null
+//            }
+//        
+
+    private void jTxtEmailEFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTxtEmailEFocusLost
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_jTxtEmailEFocusLost
 
     /**
      * @param args the command line arguments
