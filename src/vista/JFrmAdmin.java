@@ -294,7 +294,7 @@ public class JFrmAdmin extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBtnGuardarActionPerformed
 
     private void jTxtDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtDireccionActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTxtDireccionActionPerformed
 
     private void jBtnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnActualizarActionPerformed
