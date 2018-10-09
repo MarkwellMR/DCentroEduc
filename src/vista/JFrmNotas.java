@@ -5,6 +5,9 @@
  */
 package vista;
 
+import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author javam2018
@@ -110,6 +113,11 @@ public class JFrmNotas extends javax.swing.JInternalFrame {
                 jTxtNotaActionPerformed(evt);
             }
         });
+        jTxtNota.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTxtNotaKeyTyped(evt);
+            }
+        });
 
         jTxtCodigoAGSCP.setFont(new java.awt.Font("Bookman Old Style", 0, 18)); // NOI18N
         jTxtCodigoAGSCP.addActionListener(new java.awt.event.ActionListener() {
@@ -206,6 +214,16 @@ public class JFrmNotas extends javax.swing.JInternalFrame {
     private void jTxtCodigoAGSCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtCodigoAGSCPActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTxtCodigoAGSCPActionPerformed
+
+    private void jTxtNotaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtNotaKeyTyped
+        char c = evt.getKeyChar();
+        
+        if ((c<'0'|| c>'9' ) && (c!=(char)KeyEvent.VK_BACK_SPACE)){
+            evt.consume();
+             JOptionPane.showMessageDialog(null, "Solo se permiten números", "validar números", JOptionPane.INFORMATION_MESSAGE);
+            
+        }
+    }//GEN-LAST:event_jTxtNotaKeyTyped
 
     /**
      * @param args the command line arguments

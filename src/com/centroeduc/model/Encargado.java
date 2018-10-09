@@ -13,5 +13,5 @@ public class Encargado extends Persona{
         this.codS = codS;
     }
         
-        
+        //COPIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 }
