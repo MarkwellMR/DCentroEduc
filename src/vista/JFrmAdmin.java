@@ -9,6 +9,7 @@ package vista;
  *
  * @author javam2018
  */
+/////dsafasdfsadfasdfasfdasdfasdfasdfasdfasdfasdfasdf
 public class JFrmAdmin extends javax.swing.JInternalFrame {
 
     /**
