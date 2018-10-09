@@ -15,6 +15,7 @@ public class AdminDAO extends Conexion{
     private String respuesta;
     ResultSet valores;
     Administrador admin = new Administrador();
+    //// gundfkslkdfjalsññlfkajsfkjasfdljasdlfjasfjñaslkjd
     
     //almacena los datos
     public String registerAdmin(Administrador admin){
