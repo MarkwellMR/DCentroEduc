@@ -248,12 +248,13 @@ public class JFrmEncargado extends javax.swing.JInternalFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jTxtFechaNacE, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jTxtCuiE, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(jDCFechanac, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jTxtCuiE, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(Codigo)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTxtCodS, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jDCFechanac, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jTxtCodS, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -386,14 +387,21 @@ public class JFrmEncargado extends javax.swing.JInternalFrame {
         
         char c = evt.getKeyChar();
         
-        if (c<'0'|| c>'9' ) evt.consume();
+         if ((c<'0'|| c>'9' ) && (c!=(char)KeyEvent.VK_BACK_SPACE)){
+            evt.consume();
+             JOptionPane.showMessageDialog(null, "Solo se permiten numeros", "validar numeros", JOptionPane.INFORMATION_MESSAGE);
+            
+        }
     }//GEN-LAST:event_jTxtCuiEKeyTyped
 
     private void jTxtTelCasaEKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtTelCasaEKeyTyped
-        // TODO add your handling code here:
         char c = evt.getKeyChar();
         
-        if (c<'0'|| c>'9' ) evt.consume();
+        if ((c<'0'|| c>'9' ) && (c!=(char)KeyEvent.VK_BACK_SPACE)){
+            evt.consume();
+             JOptionPane.showMessageDialog(null, "Solo se permiten numeros", "validar numeros", JOptionPane.INFORMATION_MESSAGE);
+            
+        }
     }//GEN-LAST:event_jTxtTelCasaEKeyTyped
 
     private void jTxtApellidoEKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtApellidoEKeyTyped
@@ -506,7 +514,7 @@ public class JFrmEncargado extends javax.swing.JInternalFrame {
     public javax.swing.JTextField jTxtCuiE;
     public javax.swing.JTextField jTxtDireccionE;
     public javax.swing.JTextField jTxtEmailE;
-    private javax.swing.JTextField jTxtFechaNacE;
+    public javax.swing.JTextField jTxtFechaNacE;
     public javax.swing.JTextField jTxtNombreE;
     public javax.swing.JTextField jTxtTelCasaE;
     public javax.swing.JTextField jTxtTelMovilE;

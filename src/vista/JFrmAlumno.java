@@ -5,6 +5,11 @@
  */
 package vista;
 
+import java.awt.event.KeyEvent;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Usuario
@@ -53,6 +58,7 @@ public class JFrmAlumno extends javax.swing.JInternalFrame {
         jLabel11 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTblAlumno = new javax.swing.JTable();
+        jDCFechanac = new com.toedter.calendar.JDateChooser();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -76,6 +82,12 @@ public class JFrmAlumno extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Perpetua", 0, 18)); // NOI18N
         jLabel2.setText("Email:");
 
+        jTxtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTxtNombreKeyTyped(evt);
+            }
+        });
+
         jLabel3.setFont(new java.awt.Font("Perpetua", 0, 18)); // NOI18N
         jLabel3.setText("Nombre:");
 
@@ -84,6 +96,12 @@ public class JFrmAlumno extends javax.swing.JInternalFrame {
 
         jLabel5.setFont(new java.awt.Font("Perpetua", 0, 18)); // NOI18N
         jLabel5.setText("Direccion:");
+
+        jTxtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTxtApellidoKeyTyped(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Perpetua", 0, 18)); // NOI18N
         jLabel6.setText("Tel Emergencia:");
@@ -95,10 +113,22 @@ public class JFrmAlumno extends javax.swing.JInternalFrame {
         jLabel8.setText("Padecimiento");
 
         jLabel9.setFont(new java.awt.Font("Perpetua", 0, 18)); // NOI18N
-        jLabel9.setText("Fecha de Nacimiento");
+        jLabel9.setText("Fecha de Nacimiento:");
 
         jLabel10.setFont(new java.awt.Font("Perpetua", 0, 18)); // NOI18N
         jLabel10.setText("Cod Secretaria:");
+
+        jTxtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTxtEmailKeyTyped(evt);
+            }
+        });
+
+        jTxtTelEmergencia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTxtTelEmergenciaKeyTyped(evt);
+            }
+        });
 
         jTxtAPadecimiento.setColumns(20);
         jTxtAPadecimiento.setRows(5);
@@ -173,7 +203,9 @@ public class JFrmAlumno extends javax.swing.JInternalFrame {
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(jLabel9)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jTxtFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jDCFechanac, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jTxtFechaNac, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(148, 148, 148)
                                 .addComponent(jBtnGuardar)
@@ -226,7 +258,9 @@ public class JFrmAlumno extends javax.swing.JInternalFrame {
                             .addComponent(jLabel10)
                             .addComponent(jLabel9)
                             .addComponent(jTxtFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(37, 37, 37)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jDCFechanac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(3, 3, 3)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -242,6 +276,59 @@ public class JFrmAlumno extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTxtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtNombreKeyTyped
+             char c = evt.getKeyChar();
+        
+        if ((c<'a'|| c>'z' ) && (c<'A'|| c>'Z' ) && (c!=(char)KeyEvent.VK_BACK_SPACE) && (c!=(char)KeyEvent.VK_SPACE)){            
+                evt.consume();
+                JOptionPane.showMessageDialog(null, "Solo se permiten letras", "validar letras", JOptionPane.INFORMATION_MESSAGE);
+        } 
+
+    }//GEN-LAST:event_jTxtNombreKeyTyped
+
+    private void jTxtApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtApellidoKeyTyped
+         char c = evt.getKeyChar();
+        
+        if ((c<'a'|| c>'z' ) && (c<'A'|| c>'Z' ) && (c!=(char)KeyEvent.VK_BACK_SPACE) && (c!=(char)KeyEvent.VK_SPACE)){            
+                evt.consume();
+                JOptionPane.showMessageDialog(null, "Solo se permiten letras", "validar letras", JOptionPane.INFORMATION_MESSAGE);
+        } 
+
+    }//GEN-LAST:event_jTxtApellidoKeyTyped
+
+          public boolean isemail(String correo){
+                
+                Pattern pat = null;
+                Matcher mat= null;
+                pat = Pattern.compile("^[\\w\\-\\_\\+]+(\\.[\\w\\-\\_]+)*@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}$");
+                mat = pat.matcher(correo);
+                
+                if (mat.find()) {
+                    return true;                    
+                }
+                else{
+                   return false;
+                } 
+            }
+    private void jTxtEmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtEmailKeyTyped
+         if (isemail(jTxtEmail.getText())) {
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "Email incorrecto", "Intente Nuevamente", JOptionPane.INFORMATION_MESSAGE);
+            jTxtEmail.requestFocus();
+        }
+    }//GEN-LAST:event_jTxtEmailKeyTyped
+
+    private void jTxtTelEmergenciaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtTelEmergenciaKeyTyped
+        char c = evt.getKeyChar();
+        
+        if ((c<'0'|| c>'9' ) && (c!=(char)KeyEvent.VK_BACK_SPACE)){
+            evt.consume();
+             JOptionPane.showMessageDialog(null, "Solo se permiten numeros", "validar numeros", JOptionPane.INFORMATION_MESSAGE);
+            
+        }
+    }//GEN-LAST:event_jTxtTelEmergenciaKeyTyped
 
     /**
      * @param args the command line arguments
@@ -280,6 +367,7 @@ public class JFrmAlumno extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton jBtnGuardar;
+    private com.toedter.calendar.JDateChooser jDCFechanac;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

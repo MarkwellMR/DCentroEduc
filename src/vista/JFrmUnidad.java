@@ -5,6 +5,9 @@
  */
 package vista;
 
+import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author javam2018
@@ -99,8 +102,6 @@ public class JFrmUnidad extends javax.swing.JInternalFrame {
             }
         });
 
-        jTxtCodigo.setFont(new java.awt.Font("Bookman Old Style", 1, 32)); // NOI18N
-
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTxtCodigo, org.jdesktop.beansbinding.ELProperty.create("${font}"), jTxtCodigo, org.jdesktop.beansbinding.BeanProperty.create("font"));
         bindingGroup.addBinding(binding);
 
@@ -108,6 +109,11 @@ public class JFrmUnidad extends javax.swing.JInternalFrame {
         jLabel4.setText("Nombre");
 
         jTxtNombre.setFont(new java.awt.Font("Bookman Old Style", 0, 18)); // NOI18N
+        jTxtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTxtNombreKeyTyped(evt);
+            }
+        });
 
         jTxtDescripcion.setFont(new java.awt.Font("Bookman Old Style", 0, 18)); // NOI18N
 
@@ -207,6 +213,15 @@ public class JFrmUnidad extends javax.swing.JInternalFrame {
     private void jBtnEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnEstadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jBtnEstadoActionPerformed
+
+    private void jTxtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtNombreKeyTyped
+       char c = evt.getKeyChar();
+        
+        if ((c<'a'|| c>'z' ) && (c<'A'|| c>'Z' ) && (c!=(char)KeyEvent.VK_BACK_SPACE) && (c!=(char)KeyEvent.VK_SPACE)){            
+                evt.consume();
+                JOptionPane.showMessageDialog(null, "Solo se permiten letras", "validar letras", JOptionPane.INFORMATION_MESSAGE);
+        } 
+    }//GEN-LAST:event_jTxtNombreKeyTyped
 
     /**
      * @param args the command line arguments

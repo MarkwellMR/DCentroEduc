@@ -5,6 +5,11 @@
  */
 package vista;
 
+import java.awt.event.KeyEvent;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author javam2018
@@ -41,7 +46,6 @@ public class JFrmMaestro extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
         jTxtTelMovil = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jTxtFechaNac = new javax.swing.JTextField();
         jTxtCui = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -55,6 +59,7 @@ public class JFrmMaestro extends javax.swing.JInternalFrame {
         jBtnActualizar = new javax.swing.JButton();
         jTxtApellido = new javax.swing.JTextField();
         jBtnEstado = new javax.swing.JButton();
+        jDCFechanac = new com.toedter.calendar.JDateChooser();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -82,11 +87,21 @@ public class JFrmMaestro extends javax.swing.JInternalFrame {
                 jTxtNombreActionPerformed(evt);
             }
         });
+        jTxtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTxtNombreKeyTyped(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Bookman Old Style", 0, 20)); // NOI18N
         jLabel4.setText("Apellido:");
 
         jTxtEmail.setFont(new java.awt.Font("Bookman Old Style", 0, 18)); // NOI18N
+        jTxtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTxtEmailFocusLost(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Bookman Old Style", 0, 20)); // NOI18N
         jLabel5.setText("Dirección:");
@@ -113,13 +128,21 @@ public class JFrmMaestro extends javax.swing.JInternalFrame {
                 jTxtTelMovilActionPerformed(evt);
             }
         });
+        jTxtTelMovil.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTxtTelMovilKeyTyped(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Bookman Old Style", 0, 20)); // NOI18N
         jLabel9.setText("Fecha Nac.");
 
-        jTxtFechaNac.setFont(new java.awt.Font("Bookman Old Style", 0, 18)); // NOI18N
-
         jTxtCui.setFont(new java.awt.Font("Bookman Old Style", 0, 18)); // NOI18N
+        jTxtCui.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTxtCuiKeyTyped(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("Bookman Old Style", 0, 20)); // NOI18N
         jLabel10.setText("Cui:");
@@ -159,6 +182,11 @@ public class JFrmMaestro extends javax.swing.JInternalFrame {
                 jTxtTelCasaActionPerformed(evt);
             }
         });
+        jTxtTelCasa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTxtTelCasaKeyTyped(evt);
+            }
+        });
 
         jLabel12.setFont(new java.awt.Font("Bookman Old Style", 0, 20)); // NOI18N
         jLabel12.setText("Codigo A.");
@@ -174,6 +202,11 @@ public class JFrmMaestro extends javax.swing.JInternalFrame {
         });
 
         jTxtApellido.setFont(new java.awt.Font("Bookman Old Style", 0, 18)); // NOI18N
+        jTxtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTxtApellidoKeyTyped(evt);
+            }
+        });
 
         jBtnEstado.setFont(new java.awt.Font("Bookman Old Style", 0, 14)); // NOI18N
         jBtnEstado.setText("Estado");
@@ -187,10 +220,6 @@ public class JFrmMaestro extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(412, 412, 412)
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
@@ -206,7 +235,10 @@ public class JFrmMaestro extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addGap(18, 18, 18)
+                                .addComponent(jDCFechanac, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,12 +248,11 @@ public class JFrmMaestro extends javax.swing.JInternalFrame {
                                             .addComponent(jLabel5)))
                                     .addComponent(jLabel12))
                                 .addGap(26, 26, 26)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jTxtFechaNac, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
-                                    .addComponent(jTxtTelCasa, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTxtDireccion, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTxtNombre, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTxtCodigoA))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTxtTelCasa, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                                    .addComponent(jTxtDireccion)
+                                    .addComponent(jTxtNombre)
+                                    .addComponent(jTxtCodigoA, javax.swing.GroupLayout.Alignment.TRAILING))))
                         .addGap(68, 68, 68)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -250,6 +281,10 @@ public class JFrmMaestro extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jTxtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(131, 131, 131))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(412, 412, 412)
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -279,24 +314,26 @@ public class JFrmMaestro extends javax.swing.JInternalFrame {
                     .addComponent(jTxtTelCasa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jTxtFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10)
-                    .addComponent(jTxtCui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jPsfContra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTxtCodigoA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel11))
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBtnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBtnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBtnEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel10)
+                            .addComponent(jTxtCui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(13, 13, 13)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jPsfContra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTxtCodigoA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel11))
+                        .addGap(41, 41, 41)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jBtnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jBtnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jBtnEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(41, 41, 41)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDCFechanac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41))
         );
 
@@ -338,6 +375,78 @@ public class JFrmMaestro extends javax.swing.JInternalFrame {
     private void jBtnEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnEstadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jBtnEstadoActionPerformed
+
+    private void jTxtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtNombreKeyTyped
+        char c = evt.getKeyChar();
+        
+        if ((c<'a'|| c>'z' ) && (c<'A'|| c>'Z' ) && (c!=(char)KeyEvent.VK_BACK_SPACE) && (c!=(char)KeyEvent.VK_SPACE)){            
+                evt.consume();
+                JOptionPane.showMessageDialog(null, "Solo se permiten letras", "validar letras", JOptionPane.INFORMATION_MESSAGE);
+        } 
+    }//GEN-LAST:event_jTxtNombreKeyTyped
+
+    private void jTxtApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtApellidoKeyTyped
+            char c = evt.getKeyChar();
+        
+        if ((c<'a'|| c>'z' ) && (c<'A'|| c>'Z' ) && (c!=(char)KeyEvent.VK_BACK_SPACE) && (c!=(char)KeyEvent.VK_SPACE)){            
+                evt.consume();
+                JOptionPane.showMessageDialog(null, "Solo se permiten letras", "validar letras", JOptionPane.INFORMATION_MESSAGE);
+        } 
+    }//GEN-LAST:event_jTxtApellidoKeyTyped
+            public boolean isemail(String correo){
+                
+                Pattern pat = null;
+                Matcher mat= null;
+                pat = Pattern.compile("^[\\w\\-\\_\\+]+(\\.[\\w\\-\\_]+)*@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}$");
+                mat = pat.matcher(correo);
+                
+                if (mat.find()) {
+                    return true;                    
+                }
+                else{
+                   return false;
+                } 
+            } 
+        
+    
+    private void jTxtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTxtEmailFocusLost
+        if (isemail(jTxtEmail.getText())) {
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "Email incorrecto", "Intente Nuevamente", JOptionPane.INFORMATION_MESSAGE);
+            jTxtEmail.requestFocus();
+        }
+    }//GEN-LAST:event_jTxtEmailFocusLost
+
+    private void jTxtTelCasaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtTelCasaKeyTyped
+        char c = evt.getKeyChar();
+        
+        if ((c<'0'|| c>'9' ) && (c!=(char)KeyEvent.VK_BACK_SPACE)){
+            evt.consume();
+             JOptionPane.showMessageDialog(null, "Solo se permiten números", "validar números", JOptionPane.INFORMATION_MESSAGE);
+            
+        }
+    }//GEN-LAST:event_jTxtTelCasaKeyTyped
+
+    private void jTxtTelMovilKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtTelMovilKeyTyped
+    char c = evt.getKeyChar();
+        
+        if ((c<'0'|| c>'9' ) && (c!=(char)KeyEvent.VK_BACK_SPACE)){
+            evt.consume();
+             JOptionPane.showMessageDialog(null, "Solo se permiten números", "validar números", JOptionPane.INFORMATION_MESSAGE);
+            
+        }
+    }//GEN-LAST:event_jTxtTelMovilKeyTyped
+
+    private void jTxtCuiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtCuiKeyTyped
+        char c = evt.getKeyChar();
+        
+        if ((c<'0'|| c>'9' ) && (c!=(char)KeyEvent.VK_BACK_SPACE)){
+            evt.consume();
+             JOptionPane.showMessageDialog(null, "Solo se permiten números", "validar números", JOptionPane.INFORMATION_MESSAGE);
+            
+        }
+    }//GEN-LAST:event_jTxtCuiKeyTyped
 
     /**
      * @param args the command line arguments
@@ -393,6 +502,7 @@ public class JFrmMaestro extends javax.swing.JInternalFrame {
     public javax.swing.JButton jBtnActualizar;
     public javax.swing.JButton jBtnEstado;
     public javax.swing.JButton jBtnGuardar;
+    public com.toedter.calendar.JDateChooser jDCFechanac;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -414,7 +524,6 @@ public class JFrmMaestro extends javax.swing.JInternalFrame {
     public javax.swing.JTextField jTxtCui;
     public javax.swing.JTextField jTxtDireccion;
     public javax.swing.JTextField jTxtEmail;
-    public javax.swing.JTextField jTxtFechaNac;
     public javax.swing.JTextField jTxtNombre;
     public javax.swing.JTextField jTxtTelCasa;
     public javax.swing.JTextField jTxtTelMovil;

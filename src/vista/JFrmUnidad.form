@@ -223,11 +223,6 @@
       </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jTxtCodigo">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Bookman Old Style" size="32" style="1"/>
-        </Property>
-      </Properties>
       <BindingProperties>
         <BindingProperty name="font" source="jTxtCodigo" sourcePath="${font}" target="jTxtCodigo" targetPath="font" updateStrategy="0" immediately="false"/>
       </BindingProperties>
@@ -249,6 +244,9 @@
           <Font name="Bookman Old Style" size="18" style="0"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTxtNombreKeyTyped"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>

@@ -125,12 +125,11 @@ public class EncargadoControlador implements ActionListener, MouseListener {
     public void editarEncargado() {
         String mensaje = null;
 
-        //obtener los valores del calendario
+        
         String anio = Integer.toString(this.logica.jDCFechanac.getCalendar().get(java.util.Calendar.YEAR));
         String mes = Integer.toString(this.logica.jDCFechanac.getCalendar().get(java.util.Calendar.MONTH) + 1);
         String dia = Integer.toString(this.logica.jDCFechanac.getCalendar().get(java.util.Calendar.DATE));
 
-        //convirtiendo al formato deseado
         String fechaseleccionada = anio + "/" + mes + "/" + dia;
 
         encargado.setNombre(this.logica.jTxtNombreE.getText());
